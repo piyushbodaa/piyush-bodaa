@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play Dropwell</title>
+  <meta name="description" content="Play Dropwell in your browser. Rotate, hold, and drop glyphs. Clear lines, climb levels, chase a high score.">
+  <meta name="theme-color" content="#f3efe6">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("dropwell-theme");
+        if (t === "dark" || (t !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body data-page="play">
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero compact">
+      <h1>Play <span style="color:var(--blue)">Dropwell</span></h1>
+      <p>Free in the browser. Ghost outline, hold slot, next queue — lime, violet, and a well that speeds up.</p>
+    </section>
+
+    <div class="play-shell">
+      <div class="game-layout">
+        <aside class="side-panel">
+          <div>
+            <h2>Hold</h2>
+            <div class="mini-board"><canvas id="hold" width="160" height="120"></canvas></div>
+          </div>
+          <div class="stat"><span>Score</span><b data-score>0</b></div>
+          <div class="stat"><span>Lines</span><b data-lines>0</b></div>
+          <div class="stat"><span>Level</span><b data-level>1</b></div>
+          <div class="stat"><span>Best</span><b data-high>0</b></div>
+        </aside>
+
+        <div>
+          <div class="well-wrap">
+            <canvas id="game" width="360" height="720" aria-label="Dropwell playfield"></canvas>
+            <div class="overlay" id="overlay">
+              <div>
+                <h2 id="overlay-title">Play Dropwell</h2>
+                <p id="overlay-body">Arrows to move · Z / X to rotate · C to hold · Space to hard drop</p>
+                <button class="btn btn-play" id="start-btn" type="button">Play</button>
+              </div>
+            </div>
+            <div class="toast" id="toast"></div>
+          </div>
+          <div class="controls-bar">
+            <button class="btn btn-ghost" type="button" data-act="hold">Hold</button>
+            <button class="btn btn-ghost" type="button" data-act="ccw">Rotate L</button>
+            <button class="btn btn-ghost" type="button" data-act="cw">Rotate R</button>
+            <button class="btn btn-play" type="button" data-act="hard">Hard Drop</button>
+          </div>
+          <div class="touch-pad">
+            <button type="button" data-act="left">Left</button>
+            <button type="button" data-act="soft">Soft</button>
+            <button type="button" data-act="right">Right</button>
+            <button type="button" data-act="hard">Drop</button>
+          </div>
+        </div>
+
+        <aside class="side-panel">
+          <div>
+            <h2>Next</h2>
+            <div class="mini-board"><canvas data-next width="160" height="110"></canvas></div>
+            <div class="mini-board"><canvas data-next width="160" height="110"></canvas></div>
+            <div class="mini-board"><canvas data-next width="160" height="110"></canvas></div>
+            <div class="mini-board"><canvas data-next width="160" height="110"></canvas></div>
+            <div class="mini-board"><canvas data-next width="160" height="110"></canvas></div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="keys">
+        <div><b>Move</b> ← →</div>
+        <div><b>Soft drop</b> ↓</div>
+        <div><b>Hard drop</b> Space</div>
+        <div><b>Rotate</b> Z / X or ↑</div>
+        <div><b>Hold</b> C or Shift</div>
+        <div><b>Pause</b> P or Esc</div>
+      </div>
+
+      <div class="info-tabs" data-tabs>
+        <button type="button" class="is-on" data-tab="about">About</button>
+        <button type="button" data-tab="objective">Objective</button>
+        <button type="button" data-tab="controls">Controls &amp; scores</button>
+        <button type="button" data-tab="gameplay">How it works</button>
+      </div>
+      <div class="info-panel is-on" data-panel="about">
+        <h3>About Dropwell</h3>
+        <p>Dropwell is an original falling-block puzzle from Northwell Studio. Glyphs fall into a 10-wide well. You rotate, shift, and drop them. Full lines disappear. The well gets faster. If the stack crosses the rim, the round is over.</p>
+        <p>It sits in a familiar genre. The name, look, and this site are ours.</p>
+      </div>
+      <div class="info-panel" data-panel="objective">
+        <h3>Objective</h3>
+        <p>Score by clearing horizontal lines. A line vanishes when every cell is filled. Levels rise as lines go. Glyphs fall faster. Stack over the top and it’s game over.</p>
+      </div>
+      <div class="info-panel" data-panel="controls">
+        <h3>Controls &amp; scores</h3>
+        <p>Single = 100 × level. Double = 300 × level. Triple = 500 × level. Well (four lines) = 800 × level. Soft drop is 1 point per cell. Hard drop is 2. The ghost shows the landing. Next shows what’s coming. Hold parks one glyph until you need it.</p>
+      </div>
+      <div class="info-panel" data-panel="gameplay">
+        <h3>How it works</h3>
+        <p>Glyphs come from a seven-bag shuffle, so each shape shows once per bag. Wall kicks let you rotate in tight stacks. A short lock delay lets you slide after a landing. Hold once per drop. The well is 10 cells wide and 20 cells tall.</p>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/site.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

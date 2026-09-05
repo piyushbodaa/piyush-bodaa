@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News — Dropwell</title>
+  <meta name="description" content="Studio notes, cups, and new ways to play Dropwell.">
+  <meta name="theme-color" content="#f3efe6">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("dropwell-theme");
+        if (t === "dark" || (t !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body data-page="news">
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+  <main id="main">
+    <section class="page-hero">
+      <h1>Notes from the <span style="color:var(--orange)">studio</span></h1>
+      <p>Cups, skins, and the occasional gravity table.</p>
+    </section>
+    <section class="section">
+      <div class="wrap news-grid" style="grid-template-columns:repeat(3,1fr)">
+        <article class="news-card reveal">
+          <img src="assets/news-series.jpg" alt="A city of stacked cubes.">
+          <div class="body">
+            <span class="tag">Launch</span>
+            <h3>Dropwell 1.0 is live in the browser</h3>
+            <p style="margin-top:0.6rem;color:var(--ink-soft)">Ghost, hold, next queue, and a well that does not wait. Play it here, free.</p>
+          </div>
+        </article>
+        <article class="news-card reveal">
+          <img src="assets/news-wtd.jpg" alt="A street festival with inflatable cubes.">
+          <div class="body">
+            <span class="tag">Event</span>
+            <h3>The first Dropwell Cup hits this summer</h3>
+            <p style="margin-top:0.6rem;color:var(--ink-soft)">Short rounds, shared wells, inflatable glyphs if the weather holds.</p>
+          </div>
+        </article>
+        <article class="news-card reveal">
+          <img src="assets/news-awards.jpg" alt="Awards stage with a glass trophy.">
+          <div class="body">
+            <span class="tag lime">Studio</span>
+            <h3>Lime Edition merch ships with the Cup</h3>
+            <p style="margin-top:0.6rem;color:var(--ink-soft)">Varsity, a stack pack, and a watch face that actually plays.</p>
+          </div>
+        </article>
+        <article class="news-card reveal">
+          <img src="assets/book.jpg" alt="Field Notes book.">
+          <div class="body">
+            <span class="tag">Print</span>
+            <h3>Field Notes: packing a well</h3>
+            <p style="margin-top:0.6rem;color:var(--ink-soft)">Sketches, failed speeds, and the week the glyphs felt honest.</p>
+          </div>
+        </article>
+        <article class="news-card reveal">
+          <img src="assets/block-party.jpg" alt="Night League neon scene.">
+          <div class="body">
+            <span class="tag lime">Modes</span>
+            <h3>Night League keeps the gravity, adds the room</h3>
+            <p style="margin-top:0.6rem;color:var(--ink-soft)">Social rounds without turning the puzzle into a feed.</p>
+          </div>
+        </article>
+        <article class="news-card reveal">
+          <img src="assets/hero-bg.jpg" alt="Looking down a glowing well.">
+          <div class="body">
+            <span class="tag">Look</span>
+            <h3>Why the well is a shaft, not a billboard</h3>
+            <p style="margin-top:0.6rem;color:var(--ink-soft)">We wanted a hole you drop into, not a mint marketing grid.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/site.js"></script>
+</body>
+</html>

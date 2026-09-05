@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop — Dropwell</title>
+  <meta name="description" content="Dropwell games, apparel, and table pieces from Northwell Studio.">
+  <meta name="theme-color" content="#f3efe6">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("dropwell-theme");
+        if (t === "dark" || (t !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body data-page="products">
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+  <main id="main">
+    <section class="page-hero">
+      <h1>Official <span style="color:var(--orange)">Dropwell</span> shop</h1>
+      <p>Glyphs for a desk, a wrist, a jacket. From Northwell Studio.</p>
+    </section>
+    <section class="section">
+      <div class="wrap">
+        <div class="filters" data-filters>
+          <button class="filter-btn is-on" type="button" data-filter="all">All</button>
+          <button class="filter-btn" type="button" data-filter="games">Games</button>
+          <button class="filter-btn" type="button" data-filter="apparel">Apparel</button>
+          <button class="filter-btn" type="button" data-filter="toys">Objects</button>
+        </div>
+        <div class="product-grid">
+          <article class="product-card reveal" data-cat="apparel">
+            <div class="media"><img src="assets/jacket.jpg" alt="Navy varsity jacket with cube patches."></div>
+            <h3>Lime Edition varsity</h3>
+          </article>
+          <article class="product-card reveal" data-cat="games">
+            <div class="media"><img src="assets/forever.jpg" alt="Vintage televisions showing puzzle games."></div>
+            <h3>Archive mix</h3>
+          </article>
+          <article class="product-card reveal" data-cat="games">
+            <div class="media"><img src="assets/grandmaster.jpg" alt="Competitive neon puzzle arena."></div>
+            <h3>Night League cabinet</h3>
+          </article>
+          <article class="product-card reveal" data-cat="games">
+            <div class="media"><img src="assets/effect-game.jpg" alt="Dreamlike cosmic cubes."></div>
+            <h3>Aurora skin pack</h3>
+          </article>
+          <article class="product-card reveal" data-cat="games">
+            <div class="media"><img src="assets/block-party.jpg" alt="Social party puzzle with neon cubes."></div>
+            <h3>Night League</h3>
+          </article>
+          <article class="product-card reveal" data-cat="games">
+            <div class="media"><img src="assets/mobile.jpg" alt="Dropwell Pocket on a phone."></div>
+            <h3>Dropwell Pocket</h3>
+          </article>
+          <article class="product-card reveal" data-cat="toys">
+            <div class="media"><img src="assets/boardgame.jpg" alt="Table game with plastic cubes."></div>
+            <h3>Table well</h3>
+          </article>
+          <article class="product-card reveal" data-cat="apparel">
+            <div class="media"><img src="assets/backpack.jpg" alt="Backpack sculpted from cubes."></div>
+            <h3>Stack pack</h3>
+          </article>
+          <article class="product-card reveal" data-cat="toys">
+            <div class="media"><img src="assets/watch.jpg" alt="Digital wristwatch playing Dropwell."></div>
+            <h3>Wrist Well</h3>
+          </article>
+          <article class="product-card reveal" data-cat="toys">
+            <div class="media"><img src="assets/book.jpg" alt="Field Notes book."></div>
+            <h3>Field Notes</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/site.js"></script>
+</body>
+</html>
