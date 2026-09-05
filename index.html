@@ -3,198 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dropwell — a falling-block puzzle</title>
-  <meta name="description" content="Dropwell is an original puzzle game. Drop glyphs into the well, clear lines, and chase a cleaner stack.">
-  <meta name="theme-color" content="#f3efe6">
-  <script>
-    (function () {
-      try {
-        var t = localStorage.getItem("dropwell-theme");
-        if (t === "dark" || (t !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-          document.documentElement.setAttribute("data-theme", "dark");
-        }
-      } catch (e) {}
-    })();
-  </script>
+  <title>DROPWELL</title>
+  <meta name="description" content="Drop glyphs. Clear lines. Don't fill the well.">
+  <meta name="theme-color" content="#121018">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
 </head>
-<body data-page="home">
-  <a class="skip" href="#main">Skip to content</a>
-  <div id="site-header"></div>
+<body>
+  <header class="brand">
+    <h1>DROPWELL</h1>
+    <p>Drop glyphs. Clear lines.</p>
+  </header>
 
-  <main id="main">
-    <section class="hero">
-      <img class="hero-bg" src="assets/hero-bg.jpg" alt="">
-      <div class="hero-wash"></div>
-      <div class="hero-copy">
-        <h1>Drop into the <strong>well</strong></h1>
-        <p>An original falling-block puzzle. Rotate glyphs, fill a line, watch it vanish. Speed climbs. The well never blinks first.</p>
-        <a class="btn btn-play btn-lg" href="play.html">Play free</a>
-      </div>
-    </section>
-
-    <article class="feature reveal">
-      <div class="feature-media"><img src="assets/block-party.jpg" alt="Friends playing a colorful block puzzle together under neon lights."></div>
-      <div class="feature-copy">
-        <p class="kicker">New mode</p>
-        <h2 class="display">Night <span class="hl-orange">League</span></h2>
-        <p>Same gravity, new company. Night League adds short social rounds, friendly scores, and a shared well — without turning the puzzle into a chat app.</p>
-        <a class="btn btn-play" href="products.html">See the mode</a>
-      </div>
-    </article>
-
-    <article class="feature reveal">
-      <div class="feature-media"><img src="assets/mobile.jpg" alt="A smartphone on a desk showing a glossy falling-block puzzle."></div>
-      <div class="feature-copy">
-        <h2 class="display">Dropwell <span class="hl-blue">Pocket</span></h2>
-        <p>Carry the well in a pocket. Quick sprints when you have a minute, endless depth when you don’t. Ghost outline, hold slot, and a next queue that actually helps.</p>
-        <a class="btn btn-play" href="products.html">Get Pocket</a>
-      </div>
-    </article>
-
-    <article class="feature reveal">
-      <div class="feature-media"><img src="assets/book.jpg" alt="A hardcover book with a dramatic skyline and falling cubes."></div>
-      <div class="feature-copy">
-        <h2 class="display">Field <span class="hl-green">Notes</span></h2>
-        <p>How a small studio packed a well: sketches, failed gravity tables, and the week the glyphs finally felt honest. A short book from Northwell Studio, out now.</p>
-        <a class="btn btn-play" href="news.html">Read more</a>
-      </div>
-    </article>
-
-    <article class="feature reveal">
-      <div class="feature-media"><img src="assets/watch.jpg" alt="A retro-futuristic digital wristwatch playing a block puzzle."></div>
-      <div class="feature-copy dark">
-        <h2 class="display">Wrist <span class="hl-cyan">Well</span></h2>
-        <p>A tiny well on a strap. Hard-drop from a tap. High scores that live on your wrist, not in a feed.</p>
-        <a class="btn btn-play" href="products.html">See the watch</a>
-      </div>
-    </article>
-
-    <section class="section">
-      <div class="wrap">
-        <div class="section-head">
-          <h2 class="display">Notes from<br>the <span class="hl-orange">studio</span></h2>
-          <a class="btn btn-ghost" href="news.html">All news</a>
+  <main>
+    <div class="game-layout">
+      <aside class="side-panel">
+        <div>
+          <h2>Hold</h2>
+          <div class="mini-board"><canvas id="hold" width="160" height="120"></canvas></div>
         </div>
-        <div class="news-grid">
-          <a class="news-card reveal" href="news.html">
-            <img src="assets/news-series.jpg" alt="A colorful city built from stacked cubes.">
-            <div class="body">
-              <span class="tag">Launch</span>
-              <h3>Dropwell 1.0 is live in the browser</h3>
-            </div>
-          </a>
-          <a class="news-card reveal" href="news.html">
-            <img src="assets/news-wtd.jpg" alt="A street festival with giant inflatable cube sculptures.">
-            <div class="body">
-              <span class="tag">Event</span>
-              <h3>The first Dropwell Cup hits this summer</h3>
-            </div>
-          </a>
-          <a class="news-card reveal" href="news.html">
-            <img src="assets/news-awards.jpg" alt="A glass trophy on a spotlighted stage.">
-            <div class="body">
-              <span class="tag lime">Studio</span>
-              <h3>Lime Edition merch ships with the Cup</h3>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
+        <div class="stat"><span>Score</span><b data-score>0</b></div>
+        <div class="stat"><span>Lines</span><b data-lines>0</b></div>
+        <div class="stat"><span>Level</span><b data-level>1</b></div>
+        <div class="stat"><span>Best</span><b data-high>0</b></div>
+      </aside>
 
-    <section class="movie reveal">
-      <img src="assets/graffiti.jpg" alt="A brick wall covered in colorful cube graffiti.">
-      <div class="inner">
-        <h2 class="display">Built to be packed, not licensed</h2>
-        <p>Dropwell is a new puzzle from Northwell Studio. Same family of falling blocks you already know how to want — new name, new look, our own well.</p>
-        <a class="btn btn-play" href="about.html">About the studio</a>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <h2 class="display">Glyphs you can <span class="hl-orange">wear</span><br>and take home</h2>
-            <p>Jackets, a table game, a backpack that looks like a stack that got ambitious.</p>
+      <div>
+        <div class="well-wrap">
+          <canvas id="game" width="360" height="720" aria-label="Dropwell playfield"></canvas>
+          <div class="overlay" id="overlay">
+            <div>
+              <h2 id="overlay-title"></h2>
+              <p id="overlay-body"></p>
+              <button class="btn btn-play" id="start-btn" type="button">Play</button>
+            </div>
           </div>
-          <a class="btn btn-ghost" href="products.html">Open shop</a>
+          <div class="toast" id="toast"></div>
         </div>
-        <div class="product-grid">
-          <a class="product-card reveal" href="products.html">
-            <div class="media"><img src="assets/jacket.jpg" alt="Navy varsity jacket with colorful cube patches."></div>
-            <h3>Lime Edition varsity</h3>
-          </a>
-          <a class="product-card reveal" href="products.html">
-            <div class="media"><img src="assets/forever.jpg" alt="Stacked vintage televisions glowing with puzzle games."></div>
-            <h3>Archive mix</h3>
-          </a>
-          <a class="product-card reveal" href="products.html">
-            <div class="media"><img src="assets/grandmaster.jpg" alt="A dark neon competitive puzzle arena."></div>
-            <h3>Night League cabinet</h3>
-          </a>
-          <a class="product-card reveal" href="products.html">
-            <div class="media"><img src="assets/effect-game.jpg" alt="Cosmic cubes dissolving into aurora light."></div>
-            <h3>Aurora skin pack</h3>
-          </a>
-          <a class="product-card reveal" href="products.html">
-            <div class="media"><img src="assets/boardgame.jpg" alt="A physical board game with chunky plastic cubes."></div>
-            <h3>Table well</h3>
-          </a>
-          <a class="product-card reveal" href="products.html">
-            <div class="media"><img src="assets/backpack.jpg" alt="A sculptural backpack built from colorful cubes."></div>
-            <h3>Stack pack</h3>
-          </a>
+        <div class="touch-pad">
+          <button type="button" data-act="left">Left</button>
+          <button type="button" data-act="soft">Soft</button>
+          <button type="button" data-act="right">Right</button>
+          <button type="button" data-act="hard">Drop</button>
         </div>
       </div>
-    </section>
 
-    <section class="section">
-      <div class="wrap split">
-        <div class="panel reveal">
-          <h2 class="display">Stay in the<br><span class="hl-orange">well</span></h2>
-          <p style="margin-top:0.8rem;color:var(--ink-soft)">Cups, skins, and Afterstack photos. No official corporate feed — just the studio list.</p>
-          <div class="social-shot"><img src="assets/social.jpg" alt="Lifestyle collage of street cubes and sneakers."></div>
-          <a class="btn btn-play" style="margin-top:1rem" href="community.html">Community</a>
+      <aside class="side-panel">
+        <div>
+          <h2>Next</h2>
+          <div class="mini-board"><canvas data-next width="160" height="110"></canvas></div>
+          <div class="mini-board"><canvas data-next width="160" height="110"></canvas></div>
+          <div class="mini-board"><canvas data-next width="160" height="110"></canvas></div>
+          <div class="mini-board"><canvas data-next width="160" height="110"></canvas></div>
+          <div class="mini-board"><canvas data-next width="160" height="110"></canvas></div>
         </div>
-        <div class="panel newsletter reveal">
-          <h2 class="display">A letter when the <span class="hl-blue">glyphs</span> change</h2>
-          <p style="margin-top:0.8rem;color:var(--ink-soft)">Rare notes from Northwell Studio. Gravity tables, Cup dates, and the odd merch drop.</p>
-          <form data-newsletter>
-            <input type="text" name="name" placeholder="Your name" required>
-            <input type="email" name="email" placeholder="Email address" required>
-            <button class="btn btn-play" type="submit">Join</button>
-            <p class="fineprint">By joining you agree to the <a href="about.html">Terms</a>. Opt out any time. See the <a href="about.html">Privacy Policy</a>.</p>
-          </form>
-          <p class="form-ok">You’re on the list. See you in the well.</p>
-        </div>
-      </div>
-    </section>
+      </aside>
+    </div>
 
-    <section class="play-banner reveal">
-      <img src="assets/play-banner.jpg" alt="">
-      <div class="inner">
-        <h2 class="display">Play in the browser</h2>
-        <p>Ghost outline, hold slot, next queue, glossy glyphs. No download.</p>
-        <a class="btn btn-play btn-lg" href="play.html">Play Dropwell</a>
-      </div>
-    </section>
-
-    <section class="effect-band reveal">
-      <div class="copy">
-        <h2 class="display">After<span class="hl-cyan">stack</span></h2>
-        <p>Seeing cubes in a dishwasher, a trunk, a shelf. That’s Afterstack — the leftover urge to rotate the world until it fits.</p>
-        <a class="btn btn-play" href="community.html">See it outside</a>
-      </div>
-      <img src="assets/effect-life.jpg" alt="A kitchen at golden hour with dishes fitting together like puzzle blocks.">
-    </section>
+    <p class="keys">← → move · ↓ soft · Space drop · Z / X rotate · C hold · P pause</p>
   </main>
 
-  <div id="site-footer"></div>
-  <script src="js/site.js"></script>
+  <script src="js/game.js"></script>
 </body>
 </html>
